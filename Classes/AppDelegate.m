@@ -11,6 +11,10 @@
 #define kStoreType      NSSQLiteStoreType
 #define kStoreFilename  @"db.sqlite"
 
+#import "RSTabController.h"
+#import "RSCreatePostController.h"
+#import "RSSearchPostsController.h"
+#import "RSUserPostsController.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,19 +34,23 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-  // Forcefully removes the model db and recreates it.
-  //_resetModel = YES;
+	// Forcefully removes the model db and recreates it.
+	//_resetModel = YES;
+	// TODO ajdavis: turn persistence on & test all nav paths
+	TTNavigator* navigator = [TTNavigator navigator];
+	//navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+	navigator.persistenceMode = TTNavigatorPersistenceModeNone;
 
-  TTNavigator* navigator = [TTNavigator navigator];
-  navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+	TTURLMap* map = navigator.URLMap;
 
-  TTURLMap* map = navigator.URLMap;
+	[map from:@"resale://tabs" toSharedViewController:[RSTabController class]];
+	[map from:@"resale://tabs/create_post" parent:@"resale://tabs" toSharedViewController:[RSCreatePostController class]];
+	[map from:@"resale://tabs/search_posts" parent:@"resale://tabs" toSharedViewController:[RSSearchPostsController class]];
+	[map from:@"resale://tabs/user_posts" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
 
-  [map from:@"*" toViewController:[TTWebController class]];
-
-  if (![navigator restoreViewControllers]) {
-    [navigator openURLAction:[TTURLAction actionWithURLPath:@"http://three20.info"]];
-  }
+	//if (![navigator restoreViewControllers]) {
+		[navigator openURLAction:[TTURLAction actionWithURLPath:@"resale://tabs"]];
+	//}
 }
 
 
