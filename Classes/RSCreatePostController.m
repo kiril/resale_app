@@ -23,6 +23,8 @@
 @synthesize scrollView=_scrollView;
 
 - (void)viewDidLoad {
+	useTwitter = useFacebook = usePhone = useEmail = NO;
+	
 	// Keep contents view out of scroll view in IB, and start off with all its
 	// fields visible, simply so we can easily edit it in IB
 	[self updateControls:NO];
@@ -46,22 +48,22 @@
 }
 
 - (IBAction)onUseTwitter {
-	
+	useTwitter = ! useTwitter;
+	[self updateControls:YES];
 }
 
 - (IBAction)onUseFacebook {
-	
+	useFacebook = ! useFacebook;
+	[self updateControls:YES];
 }
 
 - (IBAction)onUsePhone {
 	usePhone = ! usePhone;
-	usePhoneButton.backgroundColor = usePhone ? [UIColor blueColor] : [UIColor clearColor];
 	[self updateControls:YES];
 }
 
 - (IBAction)onUseEmail {
 	useEmail = ! useEmail;
-	useEmailButton.backgroundColor = useEmail ? [UIColor blueColor] : [UIColor clearColor];
 	[self updateControls:YES];
 }
 
@@ -69,10 +71,64 @@
 	[self updateControls:YES];
 }
 
+- (IBAction)choosePhoto {
+	UIImagePickerController* imagePickerController = [UIImagePickerController new];
+	imagePickerController.delegate = self;
+	// TODO: detect if we're on simulator or real phone, use 'camera' sourceType on phone
+	imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	[self presentModalViewController:imagePickerController animated:YES];
+}
+
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField
+	shouldChangeCharactersInRange:(NSRange)range
+	replacementString:(NSString *)string
+{
+	int maxLength = 0;
+	// TODO: put some thought into these lengths
+	if (textField == titleField) maxLength = 60;
+	else if (textField == phoneField) maxLength = 20;
+	else if (textField == emailField) maxLength = 40;
+	else if (textField == priceField) maxLength = 2;
+	
+	// Allow text change if text field won't exceed max length
+	return (textField.text.length + string.length - range.length <= maxLength);
+}
+
+#pragma mark UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	UIImage* image = [info objectForKey:UIImagePickerControllerOriginalImage];
+	[photoButton setBackgroundImage:image forState:UIControlStateNormal];
+	[picker dismissModalViewControllerAnimated:YES];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[picker dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController
+	   didShowViewController:(UIViewController *)viewController
+					animated:(BOOL)animated
+{
+	// Nothing
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+	  willShowViewController:(UIViewController *)viewController
+					animated:(BOOL)animated
+{
+	// Nothing
+}
+
 #pragma mark private
 
 - (void)updateControls:(BOOL)animate {
-//	CGPoint offset = CGPointMake(0, 5);
 	int emailFieldY = freeSwitch.frame.origin.y + freeSwitch.frame.size.height + 5 + (
 		usePhone ?
 		phoneField.frame.size.height + 5 :
@@ -102,6 +158,11 @@
 	[priceContainer reposition:CGPointMake(priceContainer.frame.origin.x, priceContainerY)];
 	[postButton reposition:CGPointMake(postButton.frame.origin.x, postButtonY)];
 	
+	useTwitterButton.backgroundColor = useTwitter ? [UIColor blueColor] : [UIColor clearColor];
+	useFacebookButton.backgroundColor = useFacebook ? [UIColor blueColor] : [UIColor clearColor];
+	usePhoneButton.backgroundColor = usePhone ? [UIColor blueColor] : [UIColor clearColor];
+	useEmailButton.backgroundColor = useEmail ? [UIColor blueColor] : [UIColor clearColor];
+	
 	if (animate) [UIView commitAnimations];
 }
 
@@ -115,6 +176,9 @@
 	TT_RELEASE_SAFELY(emailField);
 	TT_RELEASE_SAFELY(freeSwitch);
 	TT_RELEASE_SAFELY(priceContainer);
+	TT_RELEASE_SAFELY(photoButton);
+	TT_RELEASE_SAFELY(useTwitterButton);
+	TT_RELEASE_SAFELY(useFacebookButton);
 	TT_RELEASE_SAFELY(usePhoneButton);
 	TT_RELEASE_SAFELY(useEmailButton);
 	TT_RELEASE_SAFELY(postButton);

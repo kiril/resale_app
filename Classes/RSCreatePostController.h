@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSCreatePostController : UIViewController <UITextFieldDelegate> {
+@interface RSCreatePostController : UIViewController
+	<UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+{
 	UIScrollView* _scrollView;
 	IBOutlet UIView* contentsView;
-	IBOutlet UITextField* titleField, * phoneField, * emailField;
+	IBOutlet UITextField* titleField, * phoneField, * emailField, * priceField;
 	IBOutlet UISwitch* freeSwitch;
 	IBOutlet UIView* priceContainer;
-	IBOutlet UIButton* usePhoneButton, * useEmailButton, * postButton;
-	BOOL usePhone, useEmail;
+	IBOutlet UIButton* photoButton, * useTwitterButton, * useFacebookButton,
+		* usePhoneButton, * useEmailButton, * postButton;
+	BOOL useTwitter, useFacebook, usePhone, useEmail;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView* scrollView;
@@ -26,5 +29,6 @@
 - (IBAction)onUsePhone;
 - (IBAction)onUseEmail;
 - (IBAction)onFreeValueChanged;
+- (IBAction)choosePhoto;
 
 @end
