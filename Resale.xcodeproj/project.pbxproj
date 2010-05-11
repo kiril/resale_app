@@ -16,10 +16,14 @@
 		E86883181196727C00E1EADF /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E86883171196727C00E1EADF /* Three20.bundle */; };
 		E8793220119678F6006F861D /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E87931D71196789B006F861D /* libThree20.a */; };
 		E87932501196EC11006F861D /* RSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = E879324F1196EC11006F861D /* RSTabController.m */; };
-		E879334D119759AA006F861D /* RSCreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E879334C119759AA006F861D /* RSCreatePostController.m */; };
 		E87933811198B0B4006F861D /* RSSearchPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87933801198B0B4006F861D /* RSSearchPostsController.m */; };
 		E87933AD1198B1A9006F861D /* RSUserPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87933AC1198B1A9006F861D /* RSUserPostsController.m */; };
 		E87934161198B480006F861D /* rs_post_photo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E87934151198B480006F861D /* rs_post_photo_icon.png */; };
+		E89D23F91199076E009EED67 /* RSCreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D23F71199076E009EED67 /* RSCreatePostController.m */; };
+		E89D23FA1199076E009EED67 /* RSCreatePostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89D23F81199076E009EED67 /* RSCreatePostController.xib */; };
+		E89D243F11990F52009EED67 /* UIViewController+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D243E11990F52009EED67 /* UIViewController+Keyboard.m */; };
+		E89D244C11991018009EED67 /* UIView+AJJD.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D244A11991018009EED67 /* UIView+AJJD.m */; };
+		E89D24741199165C009EED67 /* UIView+LW.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D24721199165C009EED67 /* UIView+LW.m */; };
 		EB383C0610BBF8A40000B2D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB383C0510BBF8A40000B2D2 /* AppDelegate.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -55,13 +59,20 @@
 		E86883171196727C00E1EADF /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		E879324E1196EC11006F861D /* RSTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSTabController.h; path = UI/RSTabController.h; sourceTree = "<group>"; };
 		E879324F1196EC11006F861D /* RSTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSTabController.m; path = UI/RSTabController.m; sourceTree = "<group>"; };
-		E879334B119759AA006F861D /* RSCreatePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCreatePostController.h; sourceTree = "<group>"; };
-		E879334C119759AA006F861D /* RSCreatePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCreatePostController.m; sourceTree = "<group>"; };
 		E879337F1198B0B4006F861D /* RSSearchPostsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSearchPostsController.h; sourceTree = "<group>"; };
 		E87933801198B0B4006F861D /* RSSearchPostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSearchPostsController.m; sourceTree = "<group>"; };
 		E87933AB1198B1A9006F861D /* RSUserPostsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSUserPostsController.h; sourceTree = "<group>"; };
 		E87933AC1198B1A9006F861D /* RSUserPostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSUserPostsController.m; sourceTree = "<group>"; };
 		E87934151198B480006F861D /* rs_post_photo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rs_post_photo_icon.png; sourceTree = "<group>"; };
+		E89D23F61199076E009EED67 /* RSCreatePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCreatePostController.h; sourceTree = "<group>"; };
+		E89D23F71199076E009EED67 /* RSCreatePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCreatePostController.m; sourceTree = "<group>"; };
+		E89D23F81199076E009EED67 /* RSCreatePostController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RSCreatePostController.xib; path = Classes/RSCreatePostController.xib; sourceTree = "<group>"; };
+		E89D243D11990F52009EED67 /* UIViewController+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Keyboard.h"; path = "Extensions/UIViewController+Keyboard.h"; sourceTree = "<group>"; };
+		E89D243E11990F52009EED67 /* UIViewController+Keyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Keyboard.m"; path = "Extensions/UIViewController+Keyboard.m"; sourceTree = "<group>"; };
+		E89D244A11991018009EED67 /* UIView+AJJD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+AJJD.m"; path = "Extensions/UIView+AJJD.m"; sourceTree = "<group>"; };
+		E89D244B11991018009EED67 /* UIView+AJJD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+AJJD.h"; path = "Extensions/UIView+AJJD.h"; sourceTree = "<group>"; };
+		E89D24721199165C009EED67 /* UIView+LW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+LW.m"; path = "Extensions/UIView+LW.m"; sourceTree = "<group>"; };
+		E89D24731199165C009EED67 /* UIView+LW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+LW.h"; path = "Extensions/UIView+LW.h"; sourceTree = "<group>"; };
 		EB383C0410BBF8A40000B2D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		EB383C0510BBF8A40000B2D2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -90,6 +101,7 @@
 				EB383C0410BBF8A40000B2D2 /* AppDelegate.h */,
 				EB383C0510BBF8A40000B2D2 /* AppDelegate.m */,
 				E87932551196ECAA006F861D /* UI */,
+				E89D243C11990F42009EED67 /* Extensions */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -129,6 +141,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E89D23FB11990783009EED67 /* XIBs */,
 				E87933D41198B458006F861D /* images */,
 				28C3AD890F43EF2300507BA6 /* Resale.xcdatamodel */,
 				8D1107310486CEB800E47090 /* Resale-Info.plist */,
@@ -169,12 +182,12 @@
 			children = (
 				E879324E1196EC11006F861D /* RSTabController.h */,
 				E879324F1196EC11006F861D /* RSTabController.m */,
-				E879334B119759AA006F861D /* RSCreatePostController.h */,
-				E879334C119759AA006F861D /* RSCreatePostController.m */,
 				E879337F1198B0B4006F861D /* RSSearchPostsController.h */,
 				E87933801198B0B4006F861D /* RSSearchPostsController.m */,
 				E87933AB1198B1A9006F861D /* RSUserPostsController.h */,
 				E87933AC1198B1A9006F861D /* RSUserPostsController.m */,
+				E89D23F61199076E009EED67 /* RSCreatePostController.h */,
+				E89D23F71199076E009EED67 /* RSCreatePostController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -193,6 +206,27 @@
 				E87934151198B480006F861D /* rs_post_photo_icon.png */,
 			);
 			name = icons;
+			sourceTree = "<group>";
+		};
+		E89D23FB11990783009EED67 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				E89D23F81199076E009EED67 /* RSCreatePostController.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
+		E89D243C11990F42009EED67 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E89D24721199165C009EED67 /* UIView+LW.m */,
+				E89D24731199165C009EED67 /* UIView+LW.h */,
+				E89D244B11991018009EED67 /* UIView+AJJD.h */,
+				E89D244A11991018009EED67 /* UIView+AJJD.m */,
+				E89D243D11990F52009EED67 /* UIViewController+Keyboard.h */,
+				E89D243E11990F52009EED67 /* UIViewController+Keyboard.m */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +296,7 @@
 			files = (
 				E86883181196727C00E1EADF /* Three20.bundle in Resources */,
 				E87934161198B480006F861D /* rs_post_photo_icon.png in Resources */,
+				E89D23FA1199076E009EED67 /* RSCreatePostController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,9 +311,12 @@
 				28C3AD8A0F43EF2300507BA6 /* Resale.xcdatamodel in Sources */,
 				EB383C0610BBF8A40000B2D2 /* AppDelegate.m in Sources */,
 				E87932501196EC11006F861D /* RSTabController.m in Sources */,
-				E879334D119759AA006F861D /* RSCreatePostController.m in Sources */,
 				E87933811198B0B4006F861D /* RSSearchPostsController.m in Sources */,
 				E87933AD1198B1A9006F861D /* RSUserPostsController.m in Sources */,
+				E89D23F91199076E009EED67 /* RSCreatePostController.m in Sources */,
+				E89D243F11990F52009EED67 /* UIViewController+Keyboard.m in Sources */,
+				E89D244C11991018009EED67 /* UIView+AJJD.m in Sources */,
+				E89D24741199165C009EED67 /* UIView+LW.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
