@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-// From http://github.com/bengottlieb/Twitter-OAuth-iPhone.git
-#import "SA_OAuthTwitterController.h"
-
 @interface RSCreatePostController : UIViewController
-	<UITextFieldDelegate, UINavigationControllerDelegate,
-	UIImagePickerControllerDelegate, SA_OAuthTwitterControllerDelegate>
+	<UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
 	UIScrollView* _scrollView;
 	IBOutlet UIView* contentsView;

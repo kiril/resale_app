@@ -142,29 +142,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)updateTwitterWithPost:(RSPost*)post {
 	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	UIViewController* authController =
-	[SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:appdel.twitterEngine
-																	delegate:self];
-	
-	if (authController) {
-		[self presentModalViewController:authController animated:YES];
-	}
-}
-
-#pragma mark SA_OAuthTwitterControllerDelegate
-
-- (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller
-	  authenticatedWithUsername: (NSString *) username
-{
-	
-}
-
-- (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller {
-	
-}
-
-- (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
-	
+	[appdel.twitterEngine setUsername:@"resaletest" password:@"r3m3mb3r"];
+	NSString* response = [appdel.twitterEngine sendUpdate:@"post"];
+	NSLog(@"%@", response);
 }
 
 #pragma mark private

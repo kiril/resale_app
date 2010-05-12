@@ -8,13 +8,12 @@
 
 #import "RSPost.h"
 
-// From http://github.com/bengottlieb/Twitter-OAuth-iPhone.git
-#import "SA_OAuthTwitterEngine.h"
+#import "MGTwitterEngine.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface AppDelegate : NSObject <UIApplicationDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, MGTwitterEngineDelegate> {
   NSManagedObjectModel*         _managedObjectModel;
   NSManagedObjectContext*       _managedObjectContext;
   NSPersistentStoreCoordinator* _persistentStoreCoordinator;
@@ -23,12 +22,12 @@
   BOOL                          _modelCreated;
   BOOL                          _resetModel;
 
-  SA_OAuthTwitterEngine* _twitterEngine;
+  MGTwitterEngine* _twitterEngine;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, readonly)         NSString*               applicationDocumentsDirectory;
-@property (nonatomic, retain)			SA_OAuthTwitterEngine* twitterEngine;
+@property (nonatomic, retain)			MGTwitterEngine* twitterEngine;
 
 @end
 
