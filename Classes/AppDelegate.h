@@ -6,6 +6,10 @@
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
+#import "RSPost.h"
+
+// From http://github.com/bengottlieb/Twitter-OAuth-iPhone.git
+#import "SA_OAuthTwitterEngine.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,11 +22,13 @@
   // App State
   BOOL                          _modelCreated;
   BOOL                          _resetModel;
+
+  SA_OAuthTwitterEngine* _twitterEngine;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, readonly)         NSString*               applicationDocumentsDirectory;
-
+@property (nonatomic, retain)			SA_OAuthTwitterEngine* twitterEngine;
 
 @end
 

@@ -10,10 +10,13 @@
 #import "UIViewController+Keyboard.h"
 #import "UIView+AJJD.h"
 #import "UIView+LW.h"
+#import "AppDelegate.h"
+#import "RSPost.h"
 
 @interface RSCreatePostController (private)
 
 - (void)updateControls:(BOOL)animate;
+- (void)updateTwitterWithPost:(RSPost*)post;
 
 @end
 
@@ -79,6 +82,15 @@
 	[self presentModalViewController:imagePickerController animated:YES];
 }
 
+- (IBAction)post {
+	RSPost* post = [RSPost new];
+	if (useTwitter) {
+		[self updateTwitterWithPost:post];
+	}
+	
+	[post release];
+}
+
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField
@@ -124,6 +136,35 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 					animated:(BOOL)animated
 {
 	// Nothing
+}
+
+#pragma mark Twitter
+
+- (void)updateTwitterWithPost:(RSPost*)post {
+	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	UIViewController* authController =
+	[SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:appdel.twitterEngine
+																	delegate:self];
+	
+	if (authController) {
+		[self presentModalViewController:authController animated:YES];
+	}
+}
+
+#pragma mark SA_OAuthTwitterControllerDelegate
+
+- (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller
+	  authenticatedWithUsername: (NSString *) username
+{
+	
+}
+
+- (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller {
+	
+}
+
+- (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
+	
 }
 
 #pragma mark private

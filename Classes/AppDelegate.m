@@ -16,6 +16,12 @@
 #import "RSSearchPostsController.h"
 #import "RSUserPostsController.h"
 
+// From http://github.com/bengottlieb/Twitter-OAuth-iPhone.git
+#import "SA_OAuthTwitterController.h"
+
+#import "Constants.h"
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,11 +37,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation AppDelegate
 
+@synthesize twitterEngine=_twitterEngine;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	// Forcefully removes the model db and recreates it.
 	//_resetModel = YES;
+	
+	self.twitterEngine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
+	self.twitterEngine.consumerKey = twitterConsumerKey;
+	self.twitterEngine.consumerSecret = twitterConsumerSecret;
+	
 	// TODO ajdavis: turn persistence on & test all nav paths
 	TTNavigator* navigator = [TTNavigator navigator];
 	//navigator.persistenceMode = TTNavigatorPersistenceModeAll;
@@ -56,9 +68,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
-  TT_RELEASE_SAFELY(_managedObjectContext);
-  TT_RELEASE_SAFELY(_managedObjectModel);
-  TT_RELEASE_SAFELY(_persistentStoreCoordinator);
+	self.twitterEngine = nil;
+	TT_RELEASE_SAFELY(_managedObjectContext);
+	TT_RELEASE_SAFELY(_managedObjectModel);
+	TT_RELEASE_SAFELY(_persistentStoreCoordinator);
 
 	[super dealloc];
 }
@@ -87,7 +100,6 @@
     }
   }
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
