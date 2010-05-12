@@ -156,15 +156,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller
 	  authenticatedWithUsername: (NSString *) username
 {
-	
+	NSLog(@"authenticatedWithUsername");
+	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	NSString* twitterConnectionId = [appdel.twitterEngine sendUpdate:@"post"];
 }
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller {
-	
+	NSLog(@"OAuthTwitterControllerFailed");	
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
-	
+	NSLog(@"OAuthTwitterControllerCanceled");	
 }
 
 #pragma mark private
