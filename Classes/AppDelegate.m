@@ -15,10 +15,6 @@
 #import "RSCreatePostController.h"
 #import "RSSearchPostsController.h"
 #import "RSUserPostsController.h"
-
-// From http://github.com/bengottlieb/Twitter-OAuth-iPhone.git
-#import "SA_OAuthTwitterController.h"
-
 #import "Constants.h"
 
 
@@ -44,9 +40,7 @@
 	// Forcefully removes the model db and recreates it.
 	//_resetModel = YES;
 	
-	self.twitterEngine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
-	self.twitterEngine.consumerKey = twitterConsumerKey;
-	self.twitterEngine.consumerSecret = twitterConsumerSecret;
+	self.twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
 	
 	// TODO ajdavis: turn persistence on & test all nav paths
 	TTNavigator* navigator = [TTNavigator navigator];
@@ -102,6 +96,21 @@
     }
   }
 }
+
+#pragma mark MGTwitterEngineDelegate
+
+- (void)requestSucceeded:(NSString *)requestIdentifier {
+	NSLog(@"%@ succeeded", requestIdentifier);
+}
+
+- (void)requestFailed:(NSString *)requestIdentifier
+			withError:(NSError *)error {
+	NSLog(@"%@ failed with error %@", requestIdentifier, error);
+}
+
+- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)identifier { }
+- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)identifier { }
+- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)identifier { }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
