@@ -6,7 +6,7 @@
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
-#import "MGTwitterEngine.h"
+#import "SA_OAuthTwitterEngine.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,12 +20,12 @@
   BOOL                          _modelCreated;
   BOOL                          _resetModel;
 
-  MGTwitterEngine* _twitterEngine;
+  SA_OAuthTwitterEngine* _twitterEngine;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, readonly)         NSString*               applicationDocumentsDirectory;
-@property (nonatomic, retain)			MGTwitterEngine* twitterEngine;
+@property (nonatomic, retain)			SA_OAuthTwitterEngine* twitterEngine;
 
 @end
 

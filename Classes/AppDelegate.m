@@ -40,7 +40,9 @@
 	// Forcefully removes the model db and recreates it.
 	//_resetModel = YES;
 	
-	self.twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
+	self.twitterEngine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
+	self.twitterEngine.consumerKey = twitterConsumerKey;
+	self.twitterEngine.consumerSecret = twitterConsumerSecret;
 	
 	// TODO ajdavis: turn persistence on & test all nav paths
 	TTNavigator* navigator = [TTNavigator navigator];
@@ -96,21 +98,6 @@
     }
   }
 }
-
-#pragma mark MGTwitterEngineDelegate
-
-- (void)requestSucceeded:(NSString *)requestIdentifier {
-	NSLog(@"%@ succeeded", requestIdentifier);
-}
-
-- (void)requestFailed:(NSString *)requestIdentifier
-			withError:(NSError *)error {
-	NSLog(@"%@ failed with error %@", requestIdentifier, error);
-}
-
-- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)identifier { }
-- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)identifier { }
-- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)identifier { }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
