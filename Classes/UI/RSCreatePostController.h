@@ -28,7 +28,8 @@
 	TTActivityLabel* activityLabel;
 	BOOL useTwitter, useFacebook, usePhone, useEmail, hasImage;
 	NSMutableArray* sharingOptions;
-	
+	NSArray* postEditingFields;
+	NSDictionary* fieldKeys;
 	NSMutableDictionary* _thePost;
 }
 

@@ -15,6 +15,8 @@
 #import "extThree20JSON/NSObject+SBJSON.h"
 #import "extThree20JSON/TTURLJSONResponse.h"
 
+#define NVL(a, b) ((a) ? (a) : (b))
+
 @interface RSCreatePostController (private)
 
 - (void)sendPost;
@@ -22,7 +24,10 @@
 - (void)updateControls:(BOOL)animate;
 - (void)updateTwitter;
 - (void)updatePostFromUI;
-- (void)enableControls:(BOOL)enabled;
+- (void)updateUIFromPost;
+- (void)enableControls:(BOOL)enabled postEditing:(BOOL)postEditing;
+- (BOOL)validateForm;
+- (BOOL)postIsNew;
 
 @end
 
@@ -32,6 +37,18 @@
 @synthesize scrollView=_scrollView, thePost=_thePost;
 
 - (void)viewDidLoad {
+	postEditingFields = [[NSArray alloc] initWithObjects:
+						 titleField, photoButton, useTwitterButton, useFacebookButton,
+						 useEmailButton, usePhoneButton, emailField, phoneField,
+						 freeSwitch, priceField, nil];
+	
+	fieldKeys = [[NSDictionary alloc] initWithObjectsAndKeys:
+				 titleField, @"title",
+				 phoneField, @"phone_number",
+				 emailField, @"email_address",
+				 priceField, @"price",
+				 nil];
+	
 	useTwitter = useFacebook = usePhone = useEmail = NO;
 	self.thePost = [[[NSMutableDictionary alloc] initWithCapacity:5] autorelease];
 	sharingOptions = [NSMutableArray new];
@@ -45,6 +62,12 @@
 	[self.scrollView addSubview:contentsView];
 	self.scrollView.contentSize = contentsView.frame.size;
 	
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+											 initWithTitle:@"New"
+											 style:UIBarButtonItemStyleBordered
+											 target:self
+											 action:@selector(newPost)];
+	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
 											  initWithTitle:@"Done"
 											  style:UIBarButtonItemStyleBordered
@@ -56,7 +79,17 @@
 
 #pragma mark button handlers
 
-- (IBAction)inputDone {
+- (void)newPost {
+	[self.thePost removeAllObjects];
+	[self updateUIFromPost];
+	[self enableControls:YES postEditing:YES];
+	[self updateControls:YES];
+	hasImage = NO;
+	
+	// Keep useTwitter, etc. the same, let user re-use them.
+}
+
+- (void)inputDone {
 	// From UIView+AJJD
 	[self.view makeSubviewsPerformSelector:@selector(resignFirstResponder)];
 }
@@ -98,7 +131,9 @@
 
 - (IBAction)post {
 	[self updatePostFromUI];
-	[self enableControls:NO];
+	if ( ! [self validateForm]) return;
+	
+	[self enableControls:NO postEditing:NO];
 	TT_RELEASE_SAFELY(activityLabel);
 //	activityLabel = [[TTActivityLabel alloc] initWithFrame:CGRectMake(30, 40, 320 - 30 * 2, 100)
 //													 style:TTActivityLabelStyleWhite
@@ -149,12 +184,25 @@
 	request.response = [[TTURLJSONResponse new] autorelease];
 	request.userInfo = [TTUserInfo topic:@"sendPost"];
 	
-	NSMutableDictionary* jsonDict = [NSMutableDictionary dictionaryWithDictionary:self.thePost];
-	[jsonDict setObject:[NSDictionary dictionaryWithObjectsAndKeys:
-						 [NSNumber numberWithFloat:11.5], @"lat",
-						 [NSNumber numberWithFloat:123.0], @"long",
-						 nil]
-				 forKey:@"location"];
+	NSMutableDictionary* jsonDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+									 [self.thePost objectForKey:@"title"], @"title",
+									 [self.thePost objectForKey:@"price"], @"price",
+									 [self.thePost objectForKey:@"image_url"], @"image_url",
+									 [NSNumber numberWithBool:useTwitter], @"posted_to_twitter",
+									 [NSNumber numberWithBool:useFacebook], @"posted_to_facebook",
+									 [NSDictionary dictionaryWithObjectsAndKeys:
+									  [NSNumber numberWithFloat:11.5], @"lat",
+									  [NSNumber numberWithFloat:123.0], @"long",
+									  nil], @"location",
+									 nil];
+	if (usePhone) {
+		[jsonDict setNonEmptyString:phoneField.text forKey:@"phone_number"];
+	}
+	
+	if (useEmail) {
+		[jsonDict setNonEmptyString:emailField.text forKey:@"email_address"];
+	}
+	
 	NSString* json = [jsonDict JSONRepresentation];
 	[request setHttpBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
 	[request send];
@@ -286,7 +334,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	} else if ([topic isEqualToString:@"sendPost"]) {
 		NSDictionary* postFromServer = [((TTURLJSONResponse*)request.response).rootObject objectForKey:@"post"];
 		[self.thePost addEntriesFromDictionary:postFromServer];
-		[self enableControls:YES];
+		[self enableControls:YES postEditing:self.postIsNew];
 	} else {
 		NSLog(@"Error in [RSCreatePostController requestDidFinishLoad]: unrecognized request topic %@",
 			  topic
@@ -299,14 +347,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
 	NSLog(@"create-post request failed: %@", error);
 	TTAlert([NSString stringWithFormat:@"Server error: %@", error]);
-	[self enableControls:YES];
+	[self enableControls:YES postEditing:self.postIsNew];
 	[self updateControls:YES];
 }
 
 - (void)requestDidCancelLoad:(TTURLRequest*)request {
 	NSLog(@"create-post request canceled");
 	TTAlert(@"Server request cancelled");
-	[self enableControls:YES];
+	[self enableControls:YES postEditing:self.postIsNew];
 	[self updateControls:YES];
 }
 
@@ -325,16 +373,57 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 // Update self.thePost from UI
 - (void)updatePostFromUI {
-	[self.thePost setObject:titleField.text forKey:@"title"];
-	[self.thePost setObject:freeSwitch.on ? @"0" : priceField.text
-					 forKey:@"price"];
+	for (id key in fieldKeys) {
+		UITextField* field = [fieldKeys objectForKey:key];
+		if (field.text)
+			[self.thePost setObject:field.text forKey:key];
+		else
+			[self.thePost removeObjectForKey:key];
+	}
+	
+	NSString* priceText = freeSwitch.on ? @"0" : NVL(priceField.text, @"");
+	[self.thePost setObject:priceText forKey:@"price"];
 }
 
-- (void)enableControls:(BOOL)enabled {
+	 
+// Update UI from self.thePost
+- (void)updateUIFromPost {
+	for (id key in fieldKeys) {
+		UITextField* field = [fieldKeys objectForKey:key];
+		field.text = [self.thePost objectForKey:key];
+	}
+	
+	[freeSwitch setOn:[self.thePost objectForKey:@"price"] > 0];
+	
+	useEmail = [self.thePost objectForKey:@"email_address"] != nil;
+	usePhone = [self.thePost objectForKey:@"phone_number"] != nil;
+	
+	// TODO: get image from post's URL
+	if ([self.thePost objectForKey:@"image_url"]) {
+		hasImage = YES;
+	} else {
+		[photoButton setBackgroundImage:TTIMAGE(@"bundle://rs_post_photo_icon.png")
+							   forState:UIControlStateNormal];
+		hasImage = NO;
+	}
+}
+	 
+	 
+- (void)enableControls:(BOOL)enabled postEditing:(BOOL)postEditing {
 	// allSubviews from UIView+AJJD.h
 	for (UIView* view in self.view.allSubviews) {
-		if ([view isKindOfClass:[UIControl class]])
-			[(UIControl*)view setEnabled:enabled];
+		if ([view isKindOfClass:[UIControl class]]) {
+			if ([postEditingFields containsObject:view]) {
+				if ([view isKindOfClass:[UISwitch class]]) {
+					// Switches gotta be different, apparently
+					((UISwitch*)view).userInteractionEnabled = postEditing;
+				} else {
+					[(UIControl*)view setEnabled:postEditing];
+				}
+			} else {
+				[(UIControl*)view setEnabled:enabled];
+			}
+		}
 	}
 }
 
@@ -384,8 +473,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	int shareButtonY = postButtonY + postButton.frame.size.height + 5;
 	
 	// Show share button if we know a URL for this post
-	BOOL showShareButton = [self.thePost objectForKey:@"url"] ? YES : NO;
-	int bottomY = shareButtonY + (showShareButton ? shareButton.frame.size.height + 5 : 0);
+	int bottomY = shareButtonY + (self.postIsNew ? 0 : shareButton.frame.size.height + 5);
 	
 	if (animate) {
 		[UIView beginAnimations:nil context:NULL];
@@ -400,9 +488,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	[priceContainer reposition:CGPointMake(priceContainer.frame.origin.x, priceContainerY)];
 	[postButton reposition:CGPointMake(postButton.frame.origin.x, postButtonY)];
 	// Has post already been sent to server?
-	postButton.enabled = [self.thePost objectForKey:@"url"] ? NO : YES;
+	postButton.enabled = self.postIsNew ? YES : NO;
 	[shareButton reposition:CGPointMake(shareButton.frame.origin.x, shareButtonY)];
-	shareButton.alpha = showShareButton ? 1 : 0;
+	shareButton.alpha = self.postIsNew ? 0 : 1;
 	CGSize size = CGSizeMake(self.scrollView.contentSize.width, bottomY);
 	// TODO: shrinking the contents to fit controls would be nice, but for some
 	// reason disables user interaction
@@ -415,6 +503,30 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	useEmailButton.backgroundColor = useEmail ? [UIColor blueColor] : [UIColor clearColor];
 	
 	if (animate) [UIView commitAnimations];
+}
+
+- (BOOL)validateForm {
+	NSMutableArray* messages = [NSMutableArray array];
+	if ( ! titleField.text.length)
+		[messages addObject:@"Please enter a title."];
+	if ( ! hasImage)
+		[messages addObject:@"Please take a photo, or choose one from your library"];
+	if ( ! useFacebook && ! useTwitter)
+		[messages addObject:@"You must post to Twitter or Facebook."];
+	if ( ! freeSwitch.on && ! priceField.text.length)
+		[messages addObject:@"You must enter a price or mark this post Free."];
+	
+	if (messages.count) {
+		NSString* message = [messages componentsJoinedByString:@"\n"];
+		TTAlert(message);
+	}
+	
+	
+	return messages.count == 0;
+}
+
+- (BOOL)postIsNew {
+	return [self.thePost objectForKey:@"url"] == nil;
 }
 
 #pragma mark -
@@ -435,6 +547,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	TT_RELEASE_SAFELY(postButton);
 	TT_RELEASE_SAFELY(shareButton);
 	TT_RELEASE_SAFELY(sharingOptions);
+	TT_RELEASE_SAFELY(postEditingFields);
 	[self viewControllerKeyboardDealloc];
     [super dealloc];
 }

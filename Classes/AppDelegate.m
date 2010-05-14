@@ -99,6 +99,21 @@
   }
 }
 
+#pragma mark MGTwitterEngineDelegate
+
+- (void)requestSucceeded:(NSString *)requestIdentifier {
+	NSLog(@"%@ succeeded", requestIdentifier);
+}
+
+- (void)requestFailed:(NSString *)requestIdentifier
+			withError:(NSError *)error {
+	NSLog(@"%@ failed with error %@", requestIdentifier, error);
+}
+
+- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)identifier { }
+- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)identifier { }
+- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)identifier { }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
