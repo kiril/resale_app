@@ -56,9 +56,11 @@
 	TTURLMap* map = navigator.URLMap;
 
 	[map from:@"resale://tabs" toSharedViewController:[RSTabController class]];
-	[map from:@"resale://tabs/create_post" parent:@"resale://tabs" toSharedViewController:[RSCreatePostController class]];
-	[map from:@"resale://tabs/search_posts" parent:@"resale://tabs" toSharedViewController:[RSSearchPostsController class]];
-	[map from:@"resale://tabs/user_posts" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
+	[map from:@"resale://create_post" parent:@"resale://tabs" toSharedViewController:[RSCreatePostController class]];
+	[map from:@"resale://search_posts" parent:@"resale://tabs" toSharedViewController:[RSSearchPostsController class]];
+	[map from:@"resale://user_posts" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
+	// TODO: set up SMS service from API and share posts with it
+//	[map from:@"resale://share_post/sms" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
 
 	//if (![navigator restoreViewControllers]) {
 		[navigator openURLAction:[TTURLAction actionWithURLPath:@"resale://tabs"]];

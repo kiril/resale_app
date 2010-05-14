@@ -18,9 +18,9 @@
 - (id) init {
 	if (self = [super init]) {
 		[self setTabURLs:[NSArray arrayWithObjects:
-						   @"resale://tabs/create_post",
-						   @"resale://tabs/search_posts",
-						   @"resale://tabs/user_posts",
+						   @"resale://create_post",
+						   @"resale://search_posts",
+						   @"resale://user_posts",
 						   // TODO: next version
 						   //@"resale://tabs/chat",
 						   nil]];

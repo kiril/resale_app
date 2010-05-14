@@ -6,8 +6,6 @@
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
-#import "RSPost.h"
-
 // From http://github.com/bengottlieb/Twitter-OAuth-iPhone.git
 #import "SA_OAuthTwitterEngine.h"
 

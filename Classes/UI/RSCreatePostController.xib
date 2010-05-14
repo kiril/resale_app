@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="35"/>
+			<integer value="16"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -66,7 +66,6 @@
 							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<bool key="IBUIClearsOnBeginEditing">YES</bool>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -218,7 +217,6 @@
 							<double key="NSSize">18</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<bool key="IBUIClearsOnBeginEditing">YES</bool>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -246,7 +244,6 @@
 							<reference key="NSCustomColorSpace" ref="452949390"/>
 						</object>
 						<reference key="IBUIFont" ref="1029448412"/>
-						<bool key="IBUIClearsOnBeginEditing">YES</bool>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -303,7 +300,6 @@
 									<double key="NSSize">24</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<bool key="IBUIClearsOnBeginEditing">YES</bool>
 								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -376,8 +372,24 @@
 							<string key="NSResourceName">rs_post_photo_icon.png</string>
 						</object>
 					</object>
+					<object class="IBUIButton" id="1071409780">
+						<reference key="NSNextResponder" ref="207502555"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{20, 434}, {280, 37}}</string>
+						<reference key="NSSuperview" ref="207502555"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="698208794"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Share</string>
+						<reference key="IBUIHighlightedTitleColor" ref="553294038"/>
+						<reference key="IBUINormalTitleColor" ref="133610867"/>
+						<reference key="IBUINormalTitleShadowColor" ref="373649107"/>
+					</object>
 				</object>
-				<string key="NSFrameSize">{320, 440}</string>
+				<string key="NSFrameSize">{320, 483}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -646,6 +658,23 @@
 					</object>
 					<int key="connectionID">68</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">shareButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1071409780"/>
+					</object>
+					<int key="connectionID">70</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">share</string>
+						<reference key="source" ref="1071409780"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">72</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -701,6 +730,7 @@
 							<reference ref="666588000"/>
 							<reference ref="651040374"/>
 							<reference ref="1047543924"/>
+							<reference ref="1071409780"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Contents View</string>
@@ -786,6 +816,11 @@
 						<reference key="object" ref="1047543924"/>
 						<reference key="parent" ref="207502555"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">69</int>
+						<reference key="object" ref="1071409780"/>
+						<reference key="parent" ref="207502555"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -813,15 +848,17 @@
 					<string>43.IBPluginDependency</string>
 					<string>44.IBPluginDependency</string>
 					<string>63.IBPluginDependency</string>
+					<string>69.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>RSCreatePostController</string>
 					<string>UIResponder</string>
-					<string>{{625, 170}, {320, 440}}</string>
+					<string>{{625, 127}, {320, 483}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{677, 149}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -857,7 +894,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">68</int>
+			<int key="maxID">72</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -876,9 +913,11 @@
 							<string>onUsePhone</string>
 							<string>onUseTwitter</string>
 							<string>post</string>
+							<string>share</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -901,6 +940,7 @@
 							<string>priceContainer</string>
 							<string>priceField</string>
 							<string>scrollView</string>
+							<string>shareButton</string>
 							<string>titleField</string>
 							<string>useEmailButton</string>
 							<string>useFacebookButton</string>
@@ -918,6 +958,7 @@
 							<string>UIView</string>
 							<string>UITextField</string>
 							<string>UIScrollView</string>
+							<string>UIButton</string>
 							<string>UITextField</string>
 							<string>UIButton</string>
 							<string>UIButton</string>

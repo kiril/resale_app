@@ -144,10 +144,12 @@ static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 	// The fields in the login view are tagged 1 and 2.  The fields in the
 	// register view are tagged 1, 2, and 3.
 	
+	// TODO: generalize, skip hidden responders
 	NSInteger nextTag = textField.tag + 1;
 	
 	// Try to find next responder
 	UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+	
 	if (nextResponder) {
 		// Found next responder, so set it.
 		[nextResponder becomeFirstResponder];

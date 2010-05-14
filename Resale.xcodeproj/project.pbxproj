@@ -13,6 +13,8 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* Resale.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Resale.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		E83CBE5C119BA4B40062D340 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83CBE5B119BA4B40062D340 /* MessageUI.framework */; };
+		E83CBEC6119C49950062D340 /* RSCreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CBEC5119C49950062D340 /* RSCreatePostController.m */; };
 		E86883181196727C00E1EADF /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E86883171196727C00E1EADF /* Three20.bundle */; };
 		E8793220119678F6006F861D /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E87931D71196789B006F861D /* libThree20.a */; };
 		E87932501196EC11006F861D /* RSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = E879324F1196EC11006F861D /* RSTabController.m */; };
@@ -20,12 +22,10 @@
 		E89D243F11990F52009EED67 /* UIViewController+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D243E11990F52009EED67 /* UIViewController+Keyboard.m */; };
 		E89D244C11991018009EED67 /* UIView+AJJD.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D244A11991018009EED67 /* UIView+AJJD.m */; };
 		E89D24741199165C009EED67 /* UIView+LW.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D24721199165C009EED67 /* UIView+LW.m */; };
-		E89D25AA1199DD40009EED67 /* RSCreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D25A41199DD40009EED67 /* RSCreatePostController.m */; };
 		E89D25AB1199DD40009EED67 /* RSCreatePostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89D25A51199DD40009EED67 /* RSCreatePostController.xib */; };
 		E89D25AC1199DD40009EED67 /* RSSearchPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D25A71199DD40009EED67 /* RSSearchPostsController.m */; };
 		E89D25AD1199DD40009EED67 /* RSUserPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D25A91199DD40009EED67 /* RSUserPostsController.m */; };
 		E89D27581199F737009EED67 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D27571199F737009EED67 /* Constants.m */; };
-		E89D27661199F988009EED67 /* RSPost.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D27651199F988009EED67 /* RSPost.m */; };
 		E89D27CD1199FDC7009EED67 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = E89D27931199FDC7009EED67 /* jQueryInject.txt */; };
 		E89D27CE1199FDC7009EED67 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = E89D27941199FDC7009EED67 /* jQueryInjectLandscape.txt */; };
 		E89D27CF1199FDC7009EED67 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E89D27951199FDC7009EED67 /* libOAuth.a */; };
@@ -42,6 +42,7 @@
 		E89D27DF1199FDC7009EED67 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D27CB1199FDC7009EED67 /* SA_OAuthTwitterEngine.m */; };
 		E89D27E01199FDC7009EED67 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = E89D27CC1199FDC7009EED67 /* twitter_load.png */; };
 		E8E7AE62119A118900A0D92B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7AE61119A118900A0D92B /* libxml2.dylib */; };
+		E8E7B2AA119B146D00A0D92B /* libextThree20JSON+SBJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7B2A3119B144000A0D92B /* libextThree20JSON+SBJSON.a */; };
 		EB383C0610BBF8A40000B2D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB383C0510BBF8A40000B2D2 /* AppDelegate.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,41 @@
 			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = UnitTests;
 		};
+		E8E7B2A2119B144000A0D92B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = "extThree20JSON+SBJSON";
+		};
+		E8E7B2A4119B144000A0D92B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6E645BD91187751200F08CB1;
+			remoteInfo = "extThree20JSON+YAJL";
+		};
+		E8E7B2A6119B144000A0D92B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = UnitTestsSBJSON;
+		};
+		E8E7B2B9119B149300A0D92B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E86882E6119671F200E1EADF /* Three20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		E8E7B2BB119B149300A0D92B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = "extThree20JSON+SBJSON";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +109,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Resale_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resale_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Resale-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Resale-Info.plist"; sourceTree = "<group>"; };
+		E83CBE5B119BA4B40062D340 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		E83CBEC5119C49950062D340 /* RSCreatePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSCreatePostController.m; path = UI/RSCreatePostController.m; sourceTree = "<group>"; };
 		E86882E6119671F200E1EADF /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E86883171196727C00E1EADF /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		E879324E1196EC11006F861D /* RSTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSTabController.h; path = UI/RSTabController.h; sourceTree = "<group>"; };
@@ -85,7 +123,6 @@
 		E89D24721199165C009EED67 /* UIView+LW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+LW.m"; path = "Extensions/UIView+LW.m"; sourceTree = "<group>"; };
 		E89D24731199165C009EED67 /* UIView+LW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+LW.h"; path = "Extensions/UIView+LW.h"; sourceTree = "<group>"; };
 		E89D25A31199DD40009EED67 /* RSCreatePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSCreatePostController.h; path = UI/RSCreatePostController.h; sourceTree = "<group>"; };
-		E89D25A41199DD40009EED67 /* RSCreatePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSCreatePostController.m; path = UI/RSCreatePostController.m; sourceTree = "<group>"; };
 		E89D25A51199DD40009EED67 /* RSCreatePostController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RSCreatePostController.xib; path = Classes/UI/RSCreatePostController.xib; sourceTree = "<group>"; };
 		E89D25A61199DD40009EED67 /* RSSearchPostsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSearchPostsController.h; path = UI/RSSearchPostsController.h; sourceTree = "<group>"; };
 		E89D25A71199DD40009EED67 /* RSSearchPostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSearchPostsController.m; path = UI/RSSearchPostsController.m; sourceTree = "<group>"; };
@@ -93,8 +130,6 @@
 		E89D25A91199DD40009EED67 /* RSUserPostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSUserPostsController.m; path = UI/RSUserPostsController.m; sourceTree = "<group>"; };
 		E89D27561199F737009EED67 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E89D27571199F737009EED67 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		E89D27641199F988009EED67 /* RSPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPost.h; sourceTree = "<group>"; };
-		E89D27651199F988009EED67 /* RSPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPost.m; sourceTree = "<group>"; };
 		E89D27931199FDC7009EED67 /* jQueryInject.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInject.txt; sourceTree = "<group>"; };
 		E89D27941199FDC7009EED67 /* jQueryInjectLandscape.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInjectLandscape.txt; sourceTree = "<group>"; };
 		E89D27951199FDC7009EED67 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
@@ -141,6 +176,7 @@
 		E89D27CB1199FDC7009EED67 /* SA_OAuthTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SA_OAuthTwitterEngine.m; sourceTree = "<group>"; };
 		E89D27CC1199FDC7009EED67 /* twitter_load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_load.png; sourceTree = "<group>"; };
 		E8E7AE61119A118900A0D92B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = SOURCE_ROOT; };
 		EB383C0410BBF8A40000B2D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		EB383C0510BBF8A40000B2D2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -159,6 +195,8 @@
 				E8793220119678F6006F861D /* libThree20.a in Frameworks */,
 				E89D27CF1199FDC7009EED67 /* libOAuth.a in Frameworks */,
 				E8E7AE62119A118900A0D92B /* libxml2.dylib in Frameworks */,
+				E8E7B2AA119B146D00A0D92B /* libextThree20JSON+SBJSON.a in Frameworks */,
+				E83CBE5C119BA4B40062D340 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +228,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */,
 				E86882E6119671F200E1EADF /* Three20.xcodeproj */,
 				E86883171196727C00E1EADF /* Three20.bundle */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -198,6 +237,7 @@
 				6EF963BC118E96B7003902E7 /* Dependencies */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				E83CBE5B119BA4B40062D340 /* MessageUI.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -256,7 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				E89D25A31199DD40009EED67 /* RSCreatePostController.h */,
-				E89D25A41199DD40009EED67 /* RSCreatePostController.m */,
+				E83CBEC5119C49950062D340 /* RSCreatePostController.m */,
 				E89D25A61199DD40009EED67 /* RSSearchPostsController.h */,
 				E89D25A71199DD40009EED67 /* RSSearchPostsController.m */,
 				E89D25A81199DD40009EED67 /* RSUserPostsController.h */,
@@ -307,8 +347,6 @@
 		E89D27631199F96C009EED67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E89D27641199F988009EED67 /* RSPost.h */,
-				E89D27651199F988009EED67 /* RSPost.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -398,6 +436,16 @@
 			path = SAOAuthTwitterEngine;
 			sourceTree = "<group>";
 		};
+		E8E7B298119B144000A0D92B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8E7B2A3119B144000A0D92B /* libextThree20JSON+SBJSON.a */,
+				E8E7B2A5119B144000A0D92B /* libextThree20JSON+YAJL.a */,
+				E8E7B2A7119B144000A0D92B /* extJSONUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -412,6 +460,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				E8E7B2BA119B149300A0D92B /* PBXTargetDependency */,
+				E8E7B2BC119B149300A0D92B /* PBXTargetDependency */,
 			);
 			name = Resale;
 			productName = Resale;
@@ -429,6 +479,10 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = E8E7B298119B144000A0D92B /* Products */;
+					ProjectRef = E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */;
+				},
 				{
 					ProductGroup = E87931D21196789B006F861D /* Products */;
 					ProjectRef = E86882E6119671F200E1EADF /* Three20.xcodeproj */;
@@ -454,6 +508,27 @@
 			fileType = wrapper.cfbundle;
 			path = UnitTests.octest;
 			remoteRef = E87931D81196789B006F861D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8E7B2A3119B144000A0D92B /* libextThree20JSON+SBJSON.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libextThree20JSON+SBJSON.a";
+			remoteRef = E8E7B2A2119B144000A0D92B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8E7B2A5119B144000A0D92B /* libextThree20JSON+YAJL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libextThree20JSON+YAJL.a";
+			remoteRef = E8E7B2A4119B144000A0D92B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8E7B2A7119B144000A0D92B /* extJSONUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = extJSONUnitTests.octest;
+			remoteRef = E8E7B2A6119B144000A0D92B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -486,11 +561,9 @@
 				E89D243F11990F52009EED67 /* UIViewController+Keyboard.m in Sources */,
 				E89D244C11991018009EED67 /* UIView+AJJD.m in Sources */,
 				E89D24741199165C009EED67 /* UIView+LW.m in Sources */,
-				E89D25AA1199DD40009EED67 /* RSCreatePostController.m in Sources */,
 				E89D25AC1199DD40009EED67 /* RSSearchPostsController.m in Sources */,
 				E89D25AD1199DD40009EED67 /* RSUserPostsController.m in Sources */,
 				E89D27581199F737009EED67 /* Constants.m in Sources */,
-				E89D27661199F988009EED67 /* RSPost.m in Sources */,
 				E89D27D01199FDC7009EED67 /* MGTwitterEngine.m in Sources */,
 				E89D27D11199FDC7009EED67 /* MGTwitterHTTPURLConnection.m in Sources */,
 				E89D27D41199FDC7009EED67 /* MGTwitterMessagesParser.m in Sources */,
@@ -502,10 +575,24 @@
 				E89D27DD1199FDC7009EED67 /* NSString+UUID.m in Sources */,
 				E89D27DE1199FDC7009EED67 /* SA_OAuthTwitterController.m in Sources */,
 				E89D27DF1199FDC7009EED67 /* SA_OAuthTwitterEngine.m in Sources */,
+				E83CBEC6119C49950062D340 /* RSCreatePostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8E7B2BA119B149300A0D92B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20;
+			targetProxy = E8E7B2B9119B149300A0D92B /* PBXContainerItemProxy */;
+		};
+		E8E7B2BC119B149300A0D92B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "extThree20JSON+SBJSON";
+			targetProxy = E8E7B2BB119B149300A0D92B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
