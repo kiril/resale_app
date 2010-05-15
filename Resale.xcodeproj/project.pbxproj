@@ -15,6 +15,7 @@
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
 		E83CBE5C119BA4B40062D340 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83CBE5B119BA4B40062D340 /* MessageUI.framework */; };
 		E83CBEC6119C49950062D340 /* RSCreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CBEC5119C49950062D340 /* RSCreatePostController.m */; };
+		E84E41CE119DA8AC00D6A4B9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84E41CD119DA8AC00D6A4B9 /* CoreLocation.framework */; };
 		E86883181196727C00E1EADF /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E86883171196727C00E1EADF /* Three20.bundle */; };
 		E8793220119678F6006F861D /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E87931D71196789B006F861D /* libThree20.a */; };
 		E87932501196EC11006F861D /* RSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = E879324F1196EC11006F861D /* RSTabController.m */; };
@@ -111,6 +112,7 @@
 		8D1107310486CEB800E47090 /* Resale-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Resale-Info.plist"; sourceTree = "<group>"; };
 		E83CBE5B119BA4B40062D340 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E83CBEC5119C49950062D340 /* RSCreatePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSCreatePostController.m; path = UI/RSCreatePostController.m; sourceTree = "<group>"; };
+		E84E41CD119DA8AC00D6A4B9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E86882E6119671F200E1EADF /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E86883171196727C00E1EADF /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		E879324E1196EC11006F861D /* RSTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSTabController.h; path = UI/RSTabController.h; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				E8E7AE62119A118900A0D92B /* libxml2.dylib in Frameworks */,
 				E8E7B2AA119B146D00A0D92B /* libextThree20JSON+SBJSON.a in Frameworks */,
 				E83CBE5C119BA4B40062D340 /* MessageUI.framework in Frameworks */,
+				E84E41CE119DA8AC00D6A4B9 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +241,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				E83CBE5B119BA4B40062D340 /* MessageUI.framework */,
+				E84E41CD119DA8AC00D6A4B9 /* CoreLocation.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";

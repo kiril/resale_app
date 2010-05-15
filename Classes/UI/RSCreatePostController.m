@@ -184,6 +184,9 @@
 	request.response = [[TTURLJSONResponse new] autorelease];
 	request.userInfo = [TTUserInfo topic:@"sendPost"];
 	
+	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	CLLocationCoordinate2D coordinate = appdel.locationManager.location.coordinate;
+	
 	NSMutableDictionary* jsonDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 									 [self.thePost objectForKey:@"title"], @"title",
 									 [self.thePost objectForKey:@"price"], @"price",
@@ -191,8 +194,8 @@
 									 [NSNumber numberWithBool:useTwitter], @"posted_to_twitter",
 									 [NSNumber numberWithBool:useFacebook], @"posted_to_facebook",
 									 [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithFloat:11.5], @"lat",
-									  [NSNumber numberWithFloat:123.0], @"long",
+									  [NSNumber numberWithFloat:coordinate.latitude], @"lat",
+									  [NSNumber numberWithFloat:coordinate.longitude], @"long",
 									  nil], @"location",
 									 nil];
 	if (usePhone) {
@@ -362,6 +365,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)updateTwitter {
 	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	// TODO: The user experience here is atrocious; use something like this:
+	// http://apiwiki.twitter.com/Twitter-REST-API-Method:-oauth-access_token-for-xAuth
+	// directly and just drop this whole stupid library.
 	UIViewController* authController =
 	[SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:appdel.twitterEngine
 																	delegate:self];

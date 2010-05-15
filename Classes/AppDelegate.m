@@ -33,7 +33,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation AppDelegate
 
-@synthesize twitterEngine=_twitterEngine;
+@synthesize twitterEngine=_twitterEngine, locationManager=_locationManager;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -55,18 +55,22 @@
 	[map from:@"resale://create_post" parent:@"resale://tabs" toSharedViewController:[RSCreatePostController class]];
 	[map from:@"resale://search_posts" parent:@"resale://tabs" toSharedViewController:[RSSearchPostsController class]];
 	[map from:@"resale://user_posts" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
-	// TODO: set up SMS service from API and share posts with it
-//	[map from:@"resale://share_post/sms" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
-
+	
 	//if (![navigator restoreViewControllers]) {
 		[navigator openURLAction:[TTURLAction actionWithURLPath:@"resale://tabs"]];
 	//}
+	
+	self.locationManager = [[CLLocationManager new] autorelease];
+	self.locationManager.delegate = self;
+	self.locationManager.distanceFilter = 50;
+	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	[self.locationManager startUpdatingLocation];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
-	self.twitterEngine = nil;
+	self.twitterEngine = self.locationManager = nil;
 	TT_RELEASE_SAFELY(_managedObjectContext);
 	TT_RELEASE_SAFELY(_managedObjectModel);
 	TT_RELEASE_SAFELY(_persistentStoreCoordinator);
@@ -99,20 +103,25 @@
   }
 }
 
-#pragma mark MGTwitterEngineDelegate
+#pragma mark -
+#pragma mark CLLocationManagerDelegate
 
-- (void)requestSucceeded:(NSString *)requestIdentifier {
-	NSLog(@"%@ succeeded", requestIdentifier);
+- (void)locationManager: (CLLocationManager *)manager
+	didUpdateToLocation: (CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation
+{
+	// TODO: periodically refresh location, say, restart every 30 seconds
+	// while in search or map views?
+	[manager stopUpdatingLocation];
+	NSLog(@"Location is (%.2f, %.2f)",
+		  newLocation.coordinate.latitude, newLocation.coordinate.longitude);
 }
 
-- (void)requestFailed:(NSString *)requestIdentifier
-			withError:(NSError *)error {
-	NSLog(@"%@ failed with error %@", requestIdentifier, error);
+- (void)locationManager: (CLLocationManager *)manager
+	   didFailWithError: (NSError *)error
+{
+	NSLog(@"Location error: %@", error);
 }
-
-- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)identifier { }
-- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)identifier { }
-- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)identifier { }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
