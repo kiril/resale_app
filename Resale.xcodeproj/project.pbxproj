@@ -16,6 +16,9 @@
 		E83CBE5C119BA4B40062D340 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83CBE5B119BA4B40062D340 /* MessageUI.framework */; };
 		E83CBEC6119C49950062D340 /* RSCreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CBEC5119C49950062D340 /* RSCreatePostController.m */; };
 		E84E41CE119DA8AC00D6A4B9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84E41CD119DA8AC00D6A4B9 /* CoreLocation.framework */; };
+		E84E41F6119EE98A00D6A4B9 /* RSSearchPostsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E84E41F4119EE98A00D6A4B9 /* RSSearchPostsModel.m */; };
+		E84E425F119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E84E425E119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m */; };
+		E84E4340119FC50900D6A4B9 /* NSDictionary+CGI.m in Sources */ = {isa = PBXBuildFile; fileRef = E84E433F119FC50900D6A4B9 /* NSDictionary+CGI.m */; };
 		E86883181196727C00E1EADF /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E86883171196727C00E1EADF /* Three20.bundle */; };
 		E8793220119678F6006F861D /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E87931D71196789B006F861D /* libThree20.a */; };
 		E87932501196EC11006F861D /* RSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = E879324F1196EC11006F861D /* RSTabController.m */; };
@@ -113,6 +116,12 @@
 		E83CBE5B119BA4B40062D340 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E83CBEC5119C49950062D340 /* RSCreatePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSCreatePostController.m; path = UI/RSCreatePostController.m; sourceTree = "<group>"; };
 		E84E41CD119DA8AC00D6A4B9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E84E41F4119EE98A00D6A4B9 /* RSSearchPostsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSearchPostsModel.m; path = Models/RSSearchPostsModel.m; sourceTree = "<group>"; };
+		E84E41F5119EE98A00D6A4B9 /* RSSearchPostsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSearchPostsModel.h; path = Models/RSSearchPostsModel.h; sourceTree = "<group>"; };
+		E84E425D119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSearchPostsTableDataSource.h; sourceTree = "<group>"; };
+		E84E425E119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSearchPostsTableDataSource.m; sourceTree = "<group>"; };
+		E84E433E119FC50900D6A4B9 /* NSDictionary+CGI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+CGI.h"; path = "Extensions/NSDictionary+CGI.h"; sourceTree = "<group>"; };
+		E84E433F119FC50900D6A4B9 /* NSDictionary+CGI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+CGI.m"; path = "Extensions/NSDictionary+CGI.m"; sourceTree = "<group>"; };
 		E86882E6119671F200E1EADF /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E86883171196727C00E1EADF /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		E879324E1196EC11006F861D /* RSTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSTabController.h; path = UI/RSTabController.h; sourceTree = "<group>"; };
@@ -338,6 +347,8 @@
 		E89D243C11990F42009EED67 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E84E433E119FC50900D6A4B9 /* NSDictionary+CGI.h */,
+				E84E433F119FC50900D6A4B9 /* NSDictionary+CGI.m */,
 				E89D24721199165C009EED67 /* UIView+LW.m */,
 				E89D24731199165C009EED67 /* UIView+LW.h */,
 				E89D244B11991018009EED67 /* UIView+AJJD.h */,
@@ -351,6 +362,10 @@
 		E89D27631199F96C009EED67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E84E41F5119EE98A00D6A4B9 /* RSSearchPostsModel.h */,
+				E84E41F4119EE98A00D6A4B9 /* RSSearchPostsModel.m */,
+				E84E425D119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.h */,
+				E84E425E119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -580,6 +595,9 @@
 				E89D27DE1199FDC7009EED67 /* SA_OAuthTwitterController.m in Sources */,
 				E89D27DF1199FDC7009EED67 /* SA_OAuthTwitterEngine.m in Sources */,
 				E83CBEC6119C49950062D340 /* RSCreatePostController.m in Sources */,
+				E84E41F6119EE98A00D6A4B9 /* RSSearchPostsModel.m in Sources */,
+				E84E425F119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m in Sources */,
+				E84E4340119FC50900D6A4B9 /* NSDictionary+CGI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
