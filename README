@@ -1,9 +1,17 @@
-Libraries: clone these in peer directories to the resale_app directory:
+= Libraries =
 
-git clone git://github.com/facebook/three20.git
-# git clone git://github.com/lloyd/yajl
-# svn checkout http://oauth.googlecode.com/svn/code/ oauth-read-only
-#git clone http://github.com/mattgemmell/MGTwitterEngine.git
-git clone http://github.com/bengottlieb/Twitter-OAuth-iPhone.git
+Clone Three20 into a peer directory to the resale_app directory:
 
-For MGTwitterEngine, see http://www.ashlux.com/wordpress/2009/10/04/compiling-mgtwitterengine-for-the-iphone-using-xcode/ and http://damienh.org/2009/06/20/setting-up-mgtwitterengine-with-yajl-106-for-iphone-development/
+$ git clone git@github.com:kiril/resale_app.git
+$ git clone git://github.com/facebook/three20.git
+$ ls
+resale_app three20
+
+We also rely on http://github.com/bengottlieb/Twitter-OAuth-iPhone.git, but that
+code is copied into the resale_app repository and is included when you clone it.
+
+Libraries evaluated and rejected:
+
+git://github.com/lloyd/yajl
+http://oauth.googlecode.com/svn/code/
+http://github.com/mattgemmell/MGTwitterEngine.git
