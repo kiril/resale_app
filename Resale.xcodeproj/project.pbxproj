@@ -13,16 +13,18 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* Resale.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Resale.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		E82F262011A0E1AB006FFD47 /* RSPostDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E82F261811A0E1AB006FFD47 /* RSPostDetailModel.m */; };
+		E82F262111A0E1AB006FFD47 /* RSPostDetailTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E82F261A11A0E1AB006FFD47 /* RSPostDetailTableDataSource.m */; };
+		E82F262211A0E1AB006FFD47 /* RSSearchPostsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E82F261D11A0E1AB006FFD47 /* RSSearchPostsModel.m */; };
+		E82F262311A0E1AB006FFD47 /* RSSearchPostsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E82F261F11A0E1AB006FFD47 /* RSSearchPostsTableDataSource.m */; };
+		E82F263711A0E749006FFD47 /* RSPostDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E82F263511A0E749006FFD47 /* RSPostDetailController.m */; };
 		E83CBE5C119BA4B40062D340 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83CBE5B119BA4B40062D340 /* MessageUI.framework */; };
 		E83CBEC6119C49950062D340 /* RSCreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CBEC5119C49950062D340 /* RSCreatePostController.m */; };
 		E84E41CE119DA8AC00D6A4B9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84E41CD119DA8AC00D6A4B9 /* CoreLocation.framework */; };
-		E84E41F6119EE98A00D6A4B9 /* RSSearchPostsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E84E41F4119EE98A00D6A4B9 /* RSSearchPostsModel.m */; };
-		E84E425F119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E84E425E119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m */; };
 		E84E4340119FC50900D6A4B9 /* NSDictionary+CGI.m in Sources */ = {isa = PBXBuildFile; fileRef = E84E433F119FC50900D6A4B9 /* NSDictionary+CGI.m */; };
 		E86883181196727C00E1EADF /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E86883171196727C00E1EADF /* Three20.bundle */; };
 		E8793220119678F6006F861D /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E87931D71196789B006F861D /* libThree20.a */; };
 		E87932501196EC11006F861D /* RSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = E879324F1196EC11006F861D /* RSTabController.m */; };
-		E87934161198B480006F861D /* rs_post_photo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E87934151198B480006F861D /* rs_post_photo_icon.png */; };
 		E89D243F11990F52009EED67 /* UIViewController+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D243E11990F52009EED67 /* UIViewController+Keyboard.m */; };
 		E89D244C11991018009EED67 /* UIView+AJJD.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D244A11991018009EED67 /* UIView+AJJD.m */; };
 		E89D24741199165C009EED67 /* UIView+LW.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D24721199165C009EED67 /* UIView+LW.m */; };
@@ -45,6 +47,10 @@
 		E89D27DE1199FDC7009EED67 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D27C91199FDC7009EED67 /* SA_OAuthTwitterController.m */; };
 		E89D27DF1199FDC7009EED67 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E89D27CB1199FDC7009EED67 /* SA_OAuthTwitterEngine.m */; };
 		E89D27E01199FDC7009EED67 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = E89D27CC1199FDC7009EED67 /* twitter_load.png */; };
+		E8E2079B11A1894900B4B178 /* NSDictionary+Post.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E2079A11A1894900B4B178 /* NSDictionary+Post.m */; };
+		E8E2079E11A1896E00B4B178 /* RSStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E2079D11A1896E00B4B178 /* RSStylesheet.m */; };
+		E8E207A011A189C700B4B178 /* rs_post_default_thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = E8E2079F11A189C700B4B178 /* rs_post_default_thumbnail.png */; };
+		E8E207A211A189CF00B4B178 /* rs_post_photo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E8E207A111A189CF00B4B178 /* rs_post_photo_icon.png */; };
 		E8E7AE62119A118900A0D92B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7AE61119A118900A0D92B /* libxml2.dylib */; };
 		E8E7B2AA119B146D00A0D92B /* libextThree20JSON+SBJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7B2A3119B144000A0D92B /* libextThree20JSON+SBJSON.a */; };
 		EB383C0610BBF8A40000B2D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB383C0510BBF8A40000B2D2 /* AppDelegate.m */; };
@@ -113,20 +119,25 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Resale_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resale_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Resale-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Resale-Info.plist"; sourceTree = "<group>"; };
+		E82F261711A0E1AB006FFD47 /* RSPostDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPostDetailModel.h; sourceTree = "<group>"; };
+		E82F261811A0E1AB006FFD47 /* RSPostDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPostDetailModel.m; sourceTree = "<group>"; };
+		E82F261911A0E1AB006FFD47 /* RSPostDetailTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPostDetailTableDataSource.h; sourceTree = "<group>"; };
+		E82F261A11A0E1AB006FFD47 /* RSPostDetailTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPostDetailTableDataSource.m; sourceTree = "<group>"; };
+		E82F261C11A0E1AB006FFD47 /* RSSearchPostsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSearchPostsModel.h; sourceTree = "<group>"; };
+		E82F261D11A0E1AB006FFD47 /* RSSearchPostsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSearchPostsModel.m; sourceTree = "<group>"; };
+		E82F261E11A0E1AB006FFD47 /* RSSearchPostsTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSearchPostsTableDataSource.h; sourceTree = "<group>"; };
+		E82F261F11A0E1AB006FFD47 /* RSSearchPostsTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSearchPostsTableDataSource.m; sourceTree = "<group>"; };
+		E82F263511A0E749006FFD47 /* RSPostDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSPostDetailController.m; path = UI/RSPostDetailController.m; sourceTree = "<group>"; };
+		E82F263611A0E749006FFD47 /* RSPostDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSPostDetailController.h; path = UI/RSPostDetailController.h; sourceTree = "<group>"; };
 		E83CBE5B119BA4B40062D340 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E83CBEC5119C49950062D340 /* RSCreatePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSCreatePostController.m; path = UI/RSCreatePostController.m; sourceTree = "<group>"; };
 		E84E41CD119DA8AC00D6A4B9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E84E41F4119EE98A00D6A4B9 /* RSSearchPostsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSearchPostsModel.m; path = Models/RSSearchPostsModel.m; sourceTree = "<group>"; };
-		E84E41F5119EE98A00D6A4B9 /* RSSearchPostsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSearchPostsModel.h; path = Models/RSSearchPostsModel.h; sourceTree = "<group>"; };
-		E84E425D119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSearchPostsTableDataSource.h; sourceTree = "<group>"; };
-		E84E425E119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSearchPostsTableDataSource.m; sourceTree = "<group>"; };
 		E84E433E119FC50900D6A4B9 /* NSDictionary+CGI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+CGI.h"; path = "Extensions/NSDictionary+CGI.h"; sourceTree = "<group>"; };
 		E84E433F119FC50900D6A4B9 /* NSDictionary+CGI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+CGI.m"; path = "Extensions/NSDictionary+CGI.m"; sourceTree = "<group>"; };
 		E86882E6119671F200E1EADF /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E86883171196727C00E1EADF /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		E879324E1196EC11006F861D /* RSTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSTabController.h; path = UI/RSTabController.h; sourceTree = "<group>"; };
 		E879324F1196EC11006F861D /* RSTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSTabController.m; path = UI/RSTabController.m; sourceTree = "<group>"; };
-		E87934151198B480006F861D /* rs_post_photo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rs_post_photo_icon.png; sourceTree = "<group>"; };
 		E89D243D11990F52009EED67 /* UIViewController+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Keyboard.h"; path = "Extensions/UIViewController+Keyboard.h"; sourceTree = "<group>"; };
 		E89D243E11990F52009EED67 /* UIViewController+Keyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Keyboard.m"; path = "Extensions/UIViewController+Keyboard.m"; sourceTree = "<group>"; };
 		E89D244A11991018009EED67 /* UIView+AJJD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+AJJD.m"; path = "Extensions/UIView+AJJD.m"; sourceTree = "<group>"; };
@@ -186,6 +197,12 @@
 		E89D27CA1199FDC7009EED67 /* SA_OAuthTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SA_OAuthTwitterEngine.h; sourceTree = "<group>"; };
 		E89D27CB1199FDC7009EED67 /* SA_OAuthTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SA_OAuthTwitterEngine.m; sourceTree = "<group>"; };
 		E89D27CC1199FDC7009EED67 /* twitter_load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_load.png; sourceTree = "<group>"; };
+		E8E2079911A1894900B4B178 /* NSDictionary+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+Post.h"; path = "Extensions/NSDictionary+Post.h"; sourceTree = "<group>"; };
+		E8E2079A11A1894900B4B178 /* NSDictionary+Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+Post.m"; path = "Extensions/NSDictionary+Post.m"; sourceTree = "<group>"; };
+		E8E2079C11A1896E00B4B178 /* RSStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSStylesheet.h; path = UI/RSStylesheet.h; sourceTree = "<group>"; };
+		E8E2079D11A1896E00B4B178 /* RSStylesheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSStylesheet.m; path = UI/RSStylesheet.m; sourceTree = "<group>"; };
+		E8E2079F11A189C700B4B178 /* rs_post_default_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rs_post_default_thumbnail.png; path = images/rs_post_default_thumbnail.png; sourceTree = "<group>"; };
+		E8E207A111A189CF00B4B178 /* rs_post_photo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rs_post_photo_icon.png; path = images/rs_post_photo_icon.png; sourceTree = "<group>"; };
 		E8E7AE61119A118900A0D92B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		E8E7B297119B144000A0D92B /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = SOURCE_ROOT; };
 		EB383C0410BBF8A40000B2D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -296,6 +313,30 @@
 			name = Dependencies;
 			sourceTree = "<group>";
 		};
+		E82F261611A0E1AB006FFD47 /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E82F261711A0E1AB006FFD47 /* RSPostDetailModel.h */,
+				E82F261811A0E1AB006FFD47 /* RSPostDetailModel.m */,
+				E82F261911A0E1AB006FFD47 /* RSPostDetailTableDataSource.h */,
+				E82F261A11A0E1AB006FFD47 /* RSPostDetailTableDataSource.m */,
+			);
+			name = PostDetail;
+			path = Models/PostDetail;
+			sourceTree = "<group>";
+		};
+		E82F261B11A0E1AB006FFD47 /* SearchPosts */ = {
+			isa = PBXGroup;
+			children = (
+				E82F261C11A0E1AB006FFD47 /* RSSearchPostsModel.h */,
+				E82F261D11A0E1AB006FFD47 /* RSSearchPostsModel.m */,
+				E82F261E11A0E1AB006FFD47 /* RSSearchPostsTableDataSource.h */,
+				E82F261F11A0E1AB006FFD47 /* RSSearchPostsTableDataSource.m */,
+			);
+			name = SearchPosts;
+			path = Models/SearchPosts;
+			sourceTree = "<group>";
+		};
 		E87931D21196789B006F861D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,10 +349,14 @@
 		E87932551196ECAA006F861D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E8E2079C11A1896E00B4B178 /* RSStylesheet.h */,
+				E8E2079D11A1896E00B4B178 /* RSStylesheet.m */,
 				E89D25A31199DD40009EED67 /* RSCreatePostController.h */,
 				E83CBEC5119C49950062D340 /* RSCreatePostController.m */,
 				E89D25A61199DD40009EED67 /* RSSearchPostsController.h */,
 				E89D25A71199DD40009EED67 /* RSSearchPostsController.m */,
+				E82F263611A0E749006FFD47 /* RSPostDetailController.h */,
+				E82F263511A0E749006FFD47 /* RSPostDetailController.m */,
 				E89D25A81199DD40009EED67 /* RSUserPostsController.h */,
 				E89D25A91199DD40009EED67 /* RSUserPostsController.m */,
 				E879324E1196EC11006F861D /* RSTabController.h */,
@@ -324,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				E87933D51198B45F006F861D /* icons */,
+				E8E2079F11A189C700B4B178 /* rs_post_default_thumbnail.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -331,7 +377,7 @@
 		E87933D51198B45F006F861D /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				E87934151198B480006F861D /* rs_post_photo_icon.png */,
+				E8E207A111A189CF00B4B178 /* rs_post_photo_icon.png */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -355,6 +401,8 @@
 				E89D244A11991018009EED67 /* UIView+AJJD.m */,
 				E89D243D11990F52009EED67 /* UIViewController+Keyboard.h */,
 				E89D243E11990F52009EED67 /* UIViewController+Keyboard.m */,
+				E8E2079911A1894900B4B178 /* NSDictionary+Post.h */,
+				E8E2079A11A1894900B4B178 /* NSDictionary+Post.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -362,10 +410,8 @@
 		E89D27631199F96C009EED67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E84E41F5119EE98A00D6A4B9 /* RSSearchPostsModel.h */,
-				E84E41F4119EE98A00D6A4B9 /* RSSearchPostsModel.m */,
-				E84E425D119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.h */,
-				E84E425E119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m */,
+				E82F261611A0E1AB006FFD47 /* PostDetail */,
+				E82F261B11A0E1AB006FFD47 /* SearchPosts */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -558,11 +604,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E86883181196727C00E1EADF /* Three20.bundle in Resources */,
-				E87934161198B480006F861D /* rs_post_photo_icon.png in Resources */,
 				E89D25AB1199DD40009EED67 /* RSCreatePostController.xib in Resources */,
 				E89D27CD1199FDC7009EED67 /* jQueryInject.txt in Resources */,
 				E89D27CE1199FDC7009EED67 /* jQueryInjectLandscape.txt in Resources */,
 				E89D27E01199FDC7009EED67 /* twitter_load.png in Resources */,
+				E8E207A011A189C700B4B178 /* rs_post_default_thumbnail.png in Resources */,
+				E8E207A211A189CF00B4B178 /* rs_post_photo_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,9 +642,14 @@
 				E89D27DE1199FDC7009EED67 /* SA_OAuthTwitterController.m in Sources */,
 				E89D27DF1199FDC7009EED67 /* SA_OAuthTwitterEngine.m in Sources */,
 				E83CBEC6119C49950062D340 /* RSCreatePostController.m in Sources */,
-				E84E41F6119EE98A00D6A4B9 /* RSSearchPostsModel.m in Sources */,
-				E84E425F119EF4D800D6A4B9 /* RSSearchPostsTableDataSource.m in Sources */,
 				E84E4340119FC50900D6A4B9 /* NSDictionary+CGI.m in Sources */,
+				E82F262011A0E1AB006FFD47 /* RSPostDetailModel.m in Sources */,
+				E82F262111A0E1AB006FFD47 /* RSPostDetailTableDataSource.m in Sources */,
+				E82F262211A0E1AB006FFD47 /* RSSearchPostsModel.m in Sources */,
+				E82F262311A0E1AB006FFD47 /* RSSearchPostsTableDataSource.m in Sources */,
+				E82F263711A0E749006FFD47 /* RSPostDetailController.m in Sources */,
+				E8E2079B11A1894900B4B178 /* NSDictionary+Post.m in Sources */,
+				E8E2079E11A1896E00B4B178 /* RSStylesheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

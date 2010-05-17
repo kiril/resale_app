@@ -8,3 +8,4 @@
 
 NSString* twitterConsumerKey;
 NSString* twitterConsumerSecret;
+int imageHeightFull;

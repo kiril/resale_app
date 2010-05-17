@@ -11,3 +11,4 @@
 
 NSString* twitterConsumerKey = @"Lt266U88n4jXLJM3rNwLw";
 NSString* twitterConsumerSecret = @"p2mmCsykDDIoToKUmoRrqCzGPgdjjIsDBnD79RIHI";
+int imageHeightFull = 168; // pixels

@@ -15,6 +15,8 @@
 #import "RSCreatePostController.h"
 #import "RSSearchPostsController.h"
 #import "RSUserPostsController.h"
+#import "RSPostDetailController.h"
+#import "RSStylesheet.h"
 #import "Constants.h"
 
 
@@ -35,14 +37,28 @@
 
 @synthesize twitterEngine=_twitterEngine, locationManager=_locationManager;
 
+- (void)cachePost:(NSDictionary*)post forShortCode:(NSString*)shortCode {
+	[_shortCodeToPost setObject:post forKey:shortCode];
+}
+
+// Get a post from cache or retrieve from server - intended to be called in bg
+- (NSDictionary*)postForShortCode:(NSString*)shortCode {
+	// TODO: Get from server if not in cache
+	return [_shortCodeToPost objectForKey:shortCode];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	// Forcefully removes the model db and recreates it.
 	//_resetModel = YES;
+	_shortCodeToPost = [NSMutableDictionary new];
 	
 	self.twitterEngine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
 	self.twitterEngine.consumerKey = twitterConsumerKey;
 	self.twitterEngine.consumerSecret = twitterConsumerSecret;
+	
+	[TTStyleSheet setGlobalStyleSheet:[[[RSStylesheet alloc]  
+										init] autorelease]];  
 	
 	// TODO ajdavis: turn persistence on & test all nav paths
 	TTNavigator* navigator = [TTNavigator navigator];
@@ -53,8 +69,15 @@
 
 	[map from:@"resale://tabs" toSharedViewController:[RSTabController class]];
 	[map from:@"resale://create_post" parent:@"resale://tabs" toSharedViewController:[RSCreatePostController class]];
+	// TODO: include lat/long/query arguments to search_posts so we can persist the user's search
 	[map from:@"resale://search_posts" parent:@"resale://tabs" toSharedViewController:[RSSearchPostsController class]];
+	[map from:@"resale://post_detail?short_code=(initWithShortCode:)"
+	   parent:@"resale://search_posts"
+toViewController:[RSPostDetailController class]
+	 selector:nil
+   transition:0];
 	[map from:@"resale://user_posts" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
+	
 	
 	//if (![navigator restoreViewControllers]) {
 		[navigator openURLAction:[TTURLAction actionWithURLPath:@"resale://tabs"]];
@@ -74,6 +97,7 @@
 	TT_RELEASE_SAFELY(_managedObjectContext);
 	TT_RELEASE_SAFELY(_managedObjectModel);
 	TT_RELEASE_SAFELY(_persistentStoreCoordinator);
+	TT_RELEASE_SAFELY(_shortCodeToPost);
 
 	[super dealloc];
 }

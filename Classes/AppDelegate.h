@@ -23,12 +23,18 @@
 
 	SA_OAuthTwitterEngine* _twitterEngine;
 	CLLocationManager* _locationManager;
+	NSMutableDictionary* _shortCodeToPost;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, readonly)         NSString*               applicationDocumentsDirectory;
 @property (nonatomic, retain)			SA_OAuthTwitterEngine* twitterEngine;
 @property (nonatomic, retain)			CLLocationManager* locationManager;
+
+- (void)cachePost:(NSDictionary*)post forShortCode:(NSString*)shortCode;
+
+// Get a post from cache or retrieve from server - intended to be called in bg
+- (NSDictionary*)postForShortCode:(NSString*)shortCode;
 
 @end
 

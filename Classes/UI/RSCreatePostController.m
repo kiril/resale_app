@@ -37,6 +37,7 @@
 @synthesize scrollView=_scrollView, thePost=_thePost;
 
 - (void)viewDidLoad {
+	self.title = @"Post";
 	postEditingFields = [[NSArray alloc] initWithObjects:
 						 titleField, photoButton, useTwitterButton, useFacebookButton,
 						 useEmailButton, usePhoneButton, emailField, phoneField,

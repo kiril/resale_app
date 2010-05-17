@@ -1,6 +1,7 @@
 //
 //  RSSearchPostsTableDataSource.m
 //  Resale
+//  Adapted from http://github.com/klazuka/TTRemoteExamples
 //
 //  Created by A Jesse Jiryu Davis on 5/15/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
@@ -9,6 +10,7 @@
 
 #import "RSSearchPostsTableDataSource.h"
 #import "RSSearchPostsModel.h"
+#import "NSDictionary+Post.h"
 
 @implementation RSSearchPostsTableDataSource
 
@@ -21,21 +23,20 @@
     // Construct an object that is suitable for the table view system
     // from each result object that we retrieve from the TTModel.
     for (NSDictionary *post in ((RSSearchPostsModel*)self.model).results) {
-        TTTableImageItem* tii = [TTTableImageItem itemWithText:[post objectForKey:@"title"]
+		NSString* short_code = [post objectForKey:@"short_code"];
+		[self.items addObject:[TTTableTextItem itemWithText:post.postShortDescription]];
+		
+		// TODO: Make full-height
+        TTTableImageItem* tii = [TTTableImageItem itemWithText:nil
 													  imageURL:[post objectForKey:@"image_url"]
 												  defaultImage:TTIMAGE(@"bundle://rs_post_default_thumbnail.png")
-														   URL:nil];
+														   URL:[NSString stringWithFormat:
+																@"resale://post_detail?short_code=%@",
+																short_code]];
 		
-        // There is a bug in Three20's table cell image logic w.r.t.
-        // Three20's image cache. By applying this TTImageStyle, we can
-        // override the layout logic to force the image to always be a fixed size.
-        // (thanks RoBak42 for the workaround!)
-        tii.imageStyle = [TTImageStyle styleWithImage:nil
-                                         defaultImage:[UIImage imageNamed:@"photo_placeholder.png"]
-                                          contentMode:UIViewContentModeScaleAspectFill
-                                                 size:CGSizeMake(75.f, 75.f)
-                                                 next:nil];
-        [self.items addObject:tii];
+		
+		
+		[self.items addObject:tii];
     }
 }
 
