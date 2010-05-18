@@ -34,12 +34,6 @@
 	tii.imageStyle = TTSTYLEVAR(imageStyle);
 	[self.items addObject:tii];
 	
-	// TODO: remove these once i've figured out how to make the image's cell as
-	// tall as the image it contains
-	[self.items addObject:[TTTableTextItem itemWithText:@"spacer"]];
-	[self.items addObject:[TTTableTextItem itemWithText:@"spacer"]];
-	[self.items addObject:[TTTableTextItem itemWithText:@"spacer"]];
-	
 	[self.items addObject:[TTTableTextItem itemWithText:post.postShortDescription]];
 	
 	if ([post objectForKey:@"phone_number"]) {

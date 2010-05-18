@@ -42,9 +42,6 @@
 	TTURLRequest *request =
 	[TTURLRequest requestWithURL:@"http://localhost:8001/post/search?" delegate:self];
 	
-	// TODO: nicely manage cache policy
-	request.cachePolicy = TTURLRequestCachePolicyNone;
-	
 	// TTURLRequest claims to use its 'parameters' property for CGI parameters in
 	// a GET request, but in fact they only work for POST
 	NSMutableDictionary* cgiParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -55,7 +52,8 @@
 	if (_query) [cgiParams setObject:_query forKey:@"query"];
 	
 	request.urlPath = [request.urlPath stringByAppendingString:[cgiParams urlEncodedString]];
-	request.cachePolicy = cachePolicy;
+	// TODO: nicely manage cache policy
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
 	request.response = [[[TTURLJSONResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";
 	[request send];

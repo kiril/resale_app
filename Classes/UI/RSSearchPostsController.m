@@ -21,29 +21,37 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) init {
   if (self = [super init]) {
-    //self.variableHeightRows = YES;
-
+	  self.variableHeightRows = YES;
 	  self.title = @"Search";
-	  
-	  // Initialize our TTTableViewDataSource and our TTModel.
-	  // TODO: can we simplify this and combine the two models?
-	  // TODO: don't start loading search until view is visible
-	  id<TTTableViewDataSource> ds = [RSSearchPostsTableDataSource dataSourceWithItems:nil];
-	  AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	  // TODO: ask user for query
-	  ds.model = [[[RSSearchPostsModel alloc] initWithLocation:appdel.locationManager.location.coordinate
-														 query:@""] autorelease];
-	  
-	  // By setting the dataSource property, the model property for this
-	  // class (SearchTableViewController) will automatically be hooked up 
-	  // to point at the same model that the dataSource points at, 
-	  // which we just instantiated above.
-	  self.dataSource = ds;
   }
 
   return self;
 }
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
+											   initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+											   target:self
+											   action:@selector(invalidateModel)] autorelease];
+}
+
+- (void)createModel {
+	// Initialize our TTTableViewDataSource and our TTModel.
+	// TODO: can we simplify this and combine the two models?
+	// TODO: don't start loading search until view is visible
+	id<TTTableViewDataSource> ds = [RSSearchPostsTableDataSource dataSourceWithItems:nil];
+	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	// TODO: ask user for query
+	ds.model = [[[RSSearchPostsModel alloc] initWithLocation:appdel.locationManager.location.coordinate
+													   query:@""] autorelease];
+	
+	// By setting the dataSource property, the model property for this
+	// class (SearchTableViewController) will automatically be hooked up 
+	// to point at the same model that the dataSource points at, 
+	// which we just instantiated above.
+	self.dataSource = ds;
+}
 
 @end
 

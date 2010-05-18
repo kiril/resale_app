@@ -20,6 +20,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithShortCode:(NSString*)shortCode {
 	if (self = [super init]) {
+		self.variableHeightRows = YES;
 		// Initialize our TTTableViewDataSource and our TTModel.
 		// TODO: can we simplify this and combine the two models?  Or at least refactor with RSSearchPostsController?
 		// TODO: don't start loading search until view is visible
