@@ -36,5 +36,7 @@
 // Get a post from cache or retrieve from server - intended to be called in bg
 - (NSDictionary*)postForShortCode:(NSString*)shortCode;
 
+- (void)clearPostCache;
+
 @end
 

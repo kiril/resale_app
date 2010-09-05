@@ -52,7 +52,8 @@
 	if (_query) [cgiParams setObject:_query forKey:@"query"];
 	
 	request.urlPath = [request.urlPath stringByAppendingString:[cgiParams urlEncodedString]];
-	// TODO: nicely manage cache policy
+	// TODO: nicely manage cache policy - this seems to violate the Three20Network
+	// assumptions to ignore the cachePolicy argument
 	request.cachePolicy = TTURLRequestCachePolicyNoCache;
 	request.response = [[[TTURLJSONResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";

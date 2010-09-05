@@ -47,6 +47,10 @@
 	return [_shortCodeToPost objectForKey:shortCode];
 }
 
+- (void)clearPostCache {
+	[_shortCodeToPost removeAllObjects];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	// Forcefully removes the model db and recreates it.
