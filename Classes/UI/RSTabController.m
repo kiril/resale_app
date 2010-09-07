@@ -7,7 +7,7 @@
 //
 
 #import "RSTabController.h"
-
+#import "Three20UI/UITabBarControllerAdditions.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,18 +15,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation RSTabController
 
-- (id) init {
-	if (self = [super init]) {
-		[self setTabURLs:[NSArray arrayWithObjects:
-						   @"resale://create_post",
-						   @"resale://search_posts",
-						   @"resale://user_posts",
-						   // TODO: next version
-						   //@"resale://tabs/chat",
-						   nil]];
-		 }
-	
-	return self;
+- (void)viewDidLoad {
+	[self setTabURLs:[NSArray arrayWithObjects:
+										@"resale://create_post",
+										// TODO: next version
+										//@"resale://search_posts",
+										@"resale://user_posts",
+										// TODO: next version
+										//@"resale://tabs/chat",
+										nil]];
 }
 
 @end

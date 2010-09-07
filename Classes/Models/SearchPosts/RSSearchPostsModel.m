@@ -51,6 +51,7 @@
 	
 	if (_query) [cgiParams setObject:_query forKey:@"query"];
 	
+	// TODO: TTURLRequest has a parameters property -- use that, and delete NSDictionary+CGI
 	request.urlPath = [request.urlPath stringByAppendingString:[cgiParams urlEncodedString]];
 	// TODO: nicely manage cache policy - this seems to violate the Three20Network
 	// assumptions to ignore the cachePolicy argument

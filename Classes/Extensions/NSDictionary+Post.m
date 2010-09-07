@@ -28,8 +28,9 @@
 	CLLocation* location = [[[CLLocation alloc] initWithLatitude:[[locationDict objectForKey:@"lat"] doubleValue]
 													   longitude:[[locationDict objectForKey:@"long"] doubleValue]]
 							autorelease];
-	// TODO: use distanceFromLocation: if OS at least 3.2
-	CLLocationDistance distance = [appdel.locationManager.location getDistanceFrom:location];
+	// TODO: use getDistanceFrom: if OS < 3.2
+	//CLLocationDistance distance = [appdel.locationManager.location getDistanceFrom:location];
+	CLLocationDistance distance = [appdel.locationManager.location distanceFromLocation:location];
 	return [NSString stringWithFormat:@"%dm", (int)distance];
 }
 

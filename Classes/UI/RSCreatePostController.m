@@ -12,8 +12,9 @@
 #import "UIView+AJJD.h"
 #import "UIView+LW.h"
 #import "AppDelegate.h"
-#import "extThree20JSON/NSObject+SBJSON.h"
+#import "RSAPI.h"
 #import "extThree20JSON/TTURLJSONResponse.h"
+#import "NSMutableDictionary+Resale.h"
 
 #define NVL(a, b) ((a) ? (a) : (b))
 
@@ -28,6 +29,7 @@
 - (void)enableControls:(BOOL)enabled postEditing:(BOOL)postEditing;
 - (BOOL)validateForm;
 - (BOOL)postIsNew;
+- (UIImage*) resizedImage:(UIImage*)inImage inRect:(CGRect)rect;
 
 @end
 
@@ -164,58 +166,6 @@
 	[actionSheet showFromTabBar:tabController.tabBar];
 }
 
-- (void)uploadImage {
-	TTURLRequest* request = [TTURLRequest requestWithURL:@"http://localhost:8001/post/image" delegate:self];
-	request.httpMethod = @"POST";
-	request.cachePolicy = TTURLRequestCachePolicyNoCache;
-	request.response = [[TTURLJSONResponse new] autorelease];
-	request.httpBody = UIImageJPEGRepresentation([photoButton backgroundImageForState:UIControlStateNormal],
-												  0.5 // quality
-												  );
-	
-	request.userInfo = [TTUserInfo topic:@"uploadImage"];
-	[request send];
-}
-
-- (void)sendPost {
-	// TODO: show progress
-	TTURLRequest* request = [TTURLRequest requestWithURL:@"http://localhost:8001/post" delegate:self];
-	request.httpMethod = @"POST";
-	request.cachePolicy = TTURLRequestCachePolicyNoCache;
-	request.response = [[TTURLJSONResponse new] autorelease];
-	request.userInfo = [TTUserInfo topic:@"sendPost"];
-	
-	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	CLLocationCoordinate2D coordinate = appdel.locationManager.location.coordinate;
-	
-	NSMutableDictionary* jsonDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-									 [self.thePost objectForKey:@"title"], @"title",
-									 [self.thePost objectForKey:@"price"], @"price",
-									 [self.thePost objectForKey:@"image_url"], @"image_url",
-									 [NSNumber numberWithBool:useTwitter], @"posted_to_twitter",
-									 [NSNumber numberWithBool:useFacebook], @"posted_to_facebook",
-									 [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithFloat:coordinate.latitude], @"lat",
-									  [NSNumber numberWithFloat:coordinate.longitude], @"long",
-									  nil], @"location",
-									 nil];
-	if (usePhone) {
-		[jsonDict setNonEmptyString:phoneField.text forKey:@"phone_number"];
-	}
-	
-	if (useEmail) {
-		[jsonDict setNonEmptyString:emailField.text forKey:@"email_address"];
-	}
-	
-	NSString* json = [jsonDict JSONRepresentation];
-	[request setHttpBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
-	[request send];
-	
-	if (useTwitter) {
-		[self updateTwitter];
-	}
-}
-
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField
@@ -288,6 +238,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 		
 		[mailer setMessageBody:emailBody
 						isHTML:YES];
+		
 		[self presentModalViewController:mailer animated:YES];
 		[mailer release];
 	} else {
@@ -301,7 +252,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 		  didFinishWithResult:(MFMailComposeResult)result
 						error:(NSError*)error
 {
-	// Nothing
+	[controller dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark UINavigationControllerDelegate
@@ -350,7 +301,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
 	NSLog(@"create-post request failed: %@", error);
-	TTAlert([NSString stringWithFormat:@"Server error: %@", error]);
+	TTAlert([NSString stringWithFormat:@"Server error: %@", error.localizedDescription]);
 	[self enableControls:YES postEditing:self.postIsNew];
 	[self updateControls:YES];
 }
@@ -459,6 +410,63 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 #pragma mark private
+
+- (void)uploadImage {
+	// TODO: in bg thread, with progress bar and a cancel button!
+	UIImage* image = [self resizedImage:[photoButton backgroundImageForState:UIControlStateNormal]
+															 inRect:CGRectMake(0, 0, 640, 480)];
+	
+	TTURLRequest* request = [RSAPI APIRequestWithPath:@"/post/image" delegate:self];
+	request.httpMethod = @"POST";
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
+	request.httpBody = UIImageJPEGRepresentation(image, 0.5 /* quality */);
+	request.userInfo = [TTUserInfo topic:@"uploadImage"];
+	[request send];
+}
+
+- (void)sendPost {
+	AppDelegate* appdel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	CLLocationCoordinate2D coordinate = appdel.locationManager.location.coordinate;
+	
+	NSMutableDictionary* jsonDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+																	 [self.thePost objectForKey:@"title"], @"title",
+																	 [self.thePost objectForKey:@"price"], @"price",
+																	 [self.thePost objectForKey:@"image_url"], @"image_url",
+																	 [NSNumber numberWithBool:useTwitter], @"posted_to_twitter",
+																	 [NSNumber numberWithBool:useFacebook], @"posted_to_facebook",
+																	 [NSDictionary dictionaryWithObjectsAndKeys:
+																		[NSNumber numberWithFloat:coordinate.latitude], @"lat",
+																		[NSNumber numberWithFloat:coordinate.longitude], @"long",
+																		nil], @"location",
+																	 nil];
+	if (usePhone) {
+		[jsonDict setNonEmptyString:phoneField.text forKey:@"phone_number"];
+	}
+	
+	if (useEmail) {
+		[jsonDict setNonEmptyString:emailField.text forKey:@"email_address"];
+	}
+	
+	// TODO: show progress
+	TTURLRequest* request = [RSAPI postAPIRequestWithPath:@"/post" json:jsonDict delegate:self];
+	request.httpMethod = @"POST";
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
+	request.userInfo = [TTUserInfo topic:@"sendPost"];
+	
+	if (useTwitter) {
+		[self updateTwitter];
+	}
+}
+
+// See http://www.iphonedevsdk.com/forum/iphone-sdk-development/5204-resize-image-high-quality.html
+- (UIImage*) resizedImage:(UIImage*)inImage inRect:(CGRect)rect {
+	// Creates a bitmap-based graphics context and makes it the current context.
+	UIGraphicsBeginImageContext(rect.size);
+	[inImage drawInRect:rect];
+	UIImage* rv = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return rv;
+}
 
 - (void)updateControls:(BOOL)animate {
 	int emailFieldY = freeSwitch.frame.origin.y + freeSwitch.frame.size.height + 5 + (

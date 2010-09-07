@@ -17,17 +17,14 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id) init {
-  if (self = [super init]) {
-    //self.variableHeightRows = YES;
-
-    self.dataSource =
-      [TTListDataSource dataSourceWithObjects:
-	   [TTTableTextItem itemWithText:@"Table cell item"],
-         nil];
-  }
-
-  return self;
+- (void)viewDidLoad {
+  [super viewDidLoad];
+	//self.variableHeightRows = YES;
+	self.title = @"My Posts";
+	self.dataSource =
+	[TTListDataSource dataSourceWithObjects:
+	 [TTTableTextItem itemWithText:@"Table cell item"],
+	 nil];
 }
 
 

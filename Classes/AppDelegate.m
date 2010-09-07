@@ -62,30 +62,32 @@
 	self.twitterEngine.consumerSecret = twitterConsumerSecret;
 	
 	[TTStyleSheet setGlobalStyleSheet:[[[RSStylesheet alloc]  
-										init] autorelease]];  
+																			init] autorelease]];  
 	
-	// TODO ajdavis: turn persistence on & test all nav paths
+	// TODO ajdavis: test all nav paths' persistence
 	TTNavigator* navigator = [TTNavigator navigator];
-	//navigator.persistenceMode = TTNavigatorPersistenceModeAll;
-	navigator.persistenceMode = TTNavigatorPersistenceModeNone;
+	navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+	navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
 
 	TTURLMap* map = navigator.URLMap;
 
+	[map from:@"*" toViewController:[TTWebController class]];
+
 	[map from:@"resale://tabs" toSharedViewController:[RSTabController class]];
-	[map from:@"resale://create_post" parent:@"resale://tabs" toSharedViewController:[RSCreatePostController class]];
+	[map from:@"resale://create_post" toSharedViewController:[RSCreatePostController class]];
 	// TODO: include lat/long/query arguments to search_posts so we can persist the user's search
-	[map from:@"resale://search_posts" parent:@"resale://tabs" toSharedViewController:[RSSearchPostsController class]];
-	[map from:@"resale://post_detail?short_code=(initWithShortCode:)"
-	   parent:@"resale://search_posts"
-toViewController:[RSPostDetailController class]
-	 selector:nil
-   transition:0];
-	[map from:@"resale://user_posts" parent:@"resale://tabs" toSharedViewController:[RSUserPostsController class]];
+//	[map from:@"resale://search_posts" toSharedViewController:[RSSearchPostsController class]];
+//	[map                   from:@"resale://post_detail?short_code=(initWithShortCode:)"
+//											 parent:@"resale://search_posts"
+//						 toViewController:[RSPostDetailController class]
+//										 selector:nil
+//									 transition:0];
+	[map from:@"resale://user_posts" toSharedViewController:[RSUserPostsController class]];
 	
 	
-	//if (![navigator restoreViewControllers]) {
+	if (![navigator restoreViewControllers]) {
 		[navigator openURLAction:[TTURLAction actionWithURLPath:@"resale://tabs"]];
-	//}
+	}
 	
 	self.locationManager = [[CLLocationManager new] autorelease];
 	self.locationManager.delegate = self;
