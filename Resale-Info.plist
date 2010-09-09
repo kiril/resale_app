@@ -25,6 +25,6 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>resale_api_server_url</key>
-	<string>184.106.223.136:8001</string>
+	<string>184.106.223.136</string>
 </dict>
 </plist>
